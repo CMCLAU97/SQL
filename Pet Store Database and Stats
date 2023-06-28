@@ -1,0 +1,30 @@
+--Create a pet store database
+
+CREATE TABLE store (id INTEGER PRIMARY KEY, name TEXT, price INTEGER, quantity_sold INTEGER, color TEXT, stock INTEGER);
+
+INSERT INTO store VALUES
+(1, "Leash", 150, 4, "blue", 10),
+(2, "Harness", 350, 2, "rosa", 5),
+(3, "Ball", 15, 7, "Amarilla", 10),
+(4, "Kennel", 750, 2, "Standard", 5),
+(5, "Rug", 450, 3, "Standard", 5),
+(6, "Nail clipper", 140, 4, "Azul", 5),
+(7, "Shampoo", 120, 6, "Naranja", 8),
+(8, "Conditioner", 120, 6, "Blanco", 8),
+(9, "Brush", 140, 3, "Azul", 8),
+(10, "Collar", 50, 20, "Rojo", 25),
+(11, "Tag", 250, 5, "Standard", 10),
+(12, "Perfume", 80, 2, "Blanco", 5),
+(13, "Cloth", 150, 6, "Invierno", 10),
+(14, "Scissors", 280, 2, "Azul", 4),
+(15, "Poop bags", 350, 8, "Ecologicas", 10)
+;
+
+--display the database ordered by price. 
+SELECT * FROM store;
+
+--display quantity sold items ordering them by the price
+SELECT price,quantity_sold FROM store ORDER BY price;
+
+--display the average items sold in the store
+SELECT SUM(quantity_sold) FROM store ORDER BY price;
