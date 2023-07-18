@@ -1,0 +1,93 @@
+/* Create table about the people and what they do here */
+
+CREATE TABLE movie_stars (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    movie_star TEXT,
+    age INTEGER,
+    gender TEXT);
+
+CREATE TABLE movie_title (
+    id INTEGER PRIMARY KEY,
+    movie_star_id INTEGER,
+    title TEXT);
+    
+CREATE TABLE marital_status (
+    id INTEGER PRIMARY KEY,
+    movie_star_id INTEGER,
+    status TEXT,
+    spouse_id INTEGER);
+
+INSERT INTO movie_stars (movie_star, age, gender) VALUES ("Chris Evans", 42, "male");
+INSERT INTO movie_stars (movie_star, age, gender) VALUES ("Chris Hemsworth", 39, "male");
+INSERT INTO movie_stars (movie_star, age, gender) VALUES ("Elsa Pataky", 47, "female");
+INSERT INTO movie_stars (movie_star, age, gender) VALUES ("Channing Tatum", 43, "male");
+INSERT INTO movie_stars (movie_star, age, gender) VALUES ("Jena Dewan", 42, "female");
+INSERT INTO movie_stars (movie_star, age, gender) VALUES ("Angelina Jolie", 48, "female");
+INSERT INTO movie_stars (movie_star, age, gender) VALUES ("Brad Pitt", 59, "male");
+INSERT INTO movie_stars (movie_star, age, gender) VALUES ("Nicole Kidman", 56, "female");
+INSERT INTO movie_stars (movie_star, age, gender) VALUES ("Tom Cruise", 61, "male");
+INSERT INTO movie_stars (movie_star, age, gender) VALUES ("Scarlett Johansson", 38, "female");
+INSERT INTO movie_stars (movie_star, age, gender) VALUES ("Daniel Craig", 55, "male");INSERT INTO movie_stars (movie_star, age, gender) VALUES ("Rachel Weisz", 53, "female");
+
+
+/* Add information about marital status*/
+
+INSERT INTO marital_status (movie_star_id, status) VALUES (1, "Single");
+INSERT INTO marital_status (movie_star_id, status, spouse_id) VALUES (2, "Married", 3);
+INSERT INTO marital_status (movie_star_id, status, spouse_id) VALUES (4, "Divorced", 5);
+INSERT INTO marital_status (movie_star_id, status, spouse_id) VALUES (6, "Divorced", 7);
+INSERT INTO marital_status (movie_star_id, status, spouse_id) VALUES (8, "Divorced", 9);
+INSERT INTO marital_status (movie_star_id, status) VALUES (10, "Single");
+INSERT INTO marital_status (movie_star_id, status, spouse_id) VALUES (11, "Married", 12);
+
+/* Adding information about the movies*/
+
+INSERT INTO movie_title (movie_star_id, title) VALUES (12, "The mummy");
+INSERT INTO movie_title (movie_star_id, title) VALUES (3, "Fast and furious 6");
+INSERT INTO movie_title (movie_star_id, title) VALUES (8, "The Undoing");
+INSERT INTO movie_title (movie_star_id, title) VALUES (2, "Thor");
+INSERT INTO movie_title (movie_star_id, title) VALUES (7, "Troy");
+INSERT INTO movie_title (movie_star_id, title) VALUES (10, "Lucy");
+INSERT INTO movie_title (movie_star_id, title) VALUES (1, "Captain America");
+INSERT INTO movie_title (movie_star_id, title) VALUES (12, "Constantine");
+INSERT INTO movie_title (movie_star_id, title) VALUES (4, "Step up");
+INSERT INTO movie_title (movie_star_id, title) VALUES (3, "The interceptor");
+INSERT INTO movie_title (movie_star_id, title) VALUES (7, "World war Z");
+INSERT INTO movie_title (movie_star_id, title) VALUES (8, "Aquaman");
+INSERT INTO movie_title (movie_star_id, title) VALUES (10, "Avengers");
+INSERT INTO movie_title (movie_star_id, title) VALUES (4, "The lost city");
+INSERT INTO movie_title (movie_star_id, title) VALUES (9, "Top gun");
+INSERT INTO movie_title (movie_star_id, title) VALUES (12, "Black widow");
+INSERT INTO movie_title (movie_star_id, title) VALUES (2, "Spiderhead");
+INSERT INTO movie_title (movie_star_id, title) VALUES (11, "007");
+INSERT INTO movie_title (movie_star_id, title) VALUES (4, "Magic Mike");
+INSERT INTO movie_title (movie_star_id, title) VALUES (8, "Big little lies");
+INSERT INTO movie_title (movie_star_id, title) VALUES (1, "Ghosted");
+INSERT INTO movie_title (movie_star_id, title) VALUES (6, "Maleficent");
+INSERT INTO movie_title (movie_star_id, title) VALUES (3, "Thor: Love and Thunder");
+INSERT INTO movie_title (movie_star_id, title) VALUES (5, "The roockie");
+INSERT INTO movie_title (movie_star_id, title) VALUES (9, "Mission impossible");
+INSERT INTO movie_title (movie_star_id, title) VALUES (10, "Ghost in the shell");
+INSERT INTO movie_title (movie_star_id, title) VALUES (11, "Casino Royale");
+INSERT INTO movie_title (movie_star_id, title) VALUES (2, "Snow white and the Huntsman");
+INSERT INTO movie_title (movie_star_id, title) VALUES (6, "Lara Croft");
+INSERT INTO movie_title (movie_star_id, title) VALUES (1, "The grey man");
+INSERT INTO movie_title (movie_star_id, title) VALUES (11, "Bond 25");
+INSERT INTO movie_title (movie_star_id, title) VALUES (5, "Step up");
+INSERT INTO movie_title (movie_star_id, title) VALUES (9, "Jack reacher");
+INSERT INTO movie_title (movie_star_id, title) VALUES (7, "Babylon");
+INSERT INTO movie_title (movie_star_id, title) VALUES (5, "The resident");
+INSERT INTO movie_title (movie_star_id, title) VALUES (6, "Eternals");
+
+
+SELECT movie_star, age, gender FROM movie_Stars;
+
+SELECT movie_stars.movie_star, movie_title.title FROM movie_title
+    JOIN movie_stars
+        ON movie_stars.id = movie_title.movie_star_id;
+        
+SELECT a.movie_star, status, b.movie_star FROM marital_status
+    JOIN movie_stars a
+    ON marital_status.movie_star_id = a.id
+    JOIN movie_stars b
+    ON marital_status.spouse_id = b.id;
